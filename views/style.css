@@ -1,0 +1,84 @@
+.date{
+  display: block;
+  float: left;
+  width: 200px;
+  border: 1px solid #ccc;
+  background-color: #f5f5dc;
+
+}
+
+
+span.right{
+  float: left;
+  padding: 10px;
+}
+
+span.left{
+  float: left;
+  display: block;
+  padding: 10px;
+  border-left: 1px solid #ccc;
+}
+
+span.startdate{
+  float: left;
+  display: block;
+  margin-top: 10px;
+}
+
+span.enddate{
+  float: left;
+  display: block;
+  margin-top: 20px;
+}
+
+.slideFrame{
+  overflow: hidden;
+  width: 100%;
+}
+
+.slideCell{
+  display: block;
+  float: left;
+  margin-right: 5px;
+  height: 250px;
+  width: 200px;
+  border: 1px solid #ccc;
+  background-color: #eee8aa;
+
+}
+#slider-0.slideFrame{
+  height: 250px;
+}
+
+#slider-1.slideFrame{
+ position: relative;
+ height: 75px;
+ margin: 10px 0;
+}
+
+#slider-1.slideCtrl{
+padding-top: 30px;
+}
+
+.slideCtrl{
+margin-top: 270px;
+display: none;
+position: absolute;
+top: 0;
+width: 90px;
+height: 70px;
+color: #fff;
+font-size: 20px;
+font-weight: bold;
+text-align: center;
+background-color: #333;
+opacity: 0.8;
+-moz-opacity: 0.8;
+-webkit-opacity: 0.8;
+filter: alpha(opacity=80);
+}
+
+.slideCtrl.left {left: 0;}
+.slideCtrl.right{right: 0;}
+
