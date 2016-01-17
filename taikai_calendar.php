@@ -21,12 +21,12 @@
    define('API_URL', 'https://www.googleapis.com/calendar/v3/calendars/'.CALENDAR_ID.'/events?key='.API_KEY.'&singleEvents=true');
     
    // ここでデータを取得する範囲を決めています
-    $t = mktime(0, 0, 0, 1, 1, 2016);
-    $t2 = mktime(0, 0, 0, 12, 31, 2016);
+    $t = mktime(0, 0, 0, date("m"), date("d"), date("Y")-1);
+    $t2 = mktime(0, 0, 0, date("m"), date("d"), date("Y")+1);
      
      $params = array();
      $params[] = 'orderBy=startTime';
-     $params[] = 'maxResults=10';
+     $params[] = 'maxResults=100';
      $params[] = 'timeMin='.urlencode(date('c', $t));
      $params[] = 'timeMax='.urlencode(date('c', $t2));
       
@@ -70,11 +70,11 @@
 		<ul class ="slideGuide">
 <? foreach ($json['items'] as $item) {
 								if(isset($item["start"]["dateTime"])) {
-										print '<li class="slideCell"><span class="left">行事名:<p>'.$item["summary"].'<p>場所:'.$item["location"].'<p>開始時間:<p>'.$item["start"]["dateTime"].'<p>終了時間:<p>'.$item["end"]["dateTime"].'</span></li>';
+										print '<li class="slideCell"><span class="top">行事名</span><p><span class="name">'.$item["summary"].'</span><span class="left"><br><p><p>場所:'.$item["location"].'<p>開始時間:<p>'.$item["start"]["dateTime"].'<p>終了時間:<p>'.$item["end"]["dateTime"].'</span></li>';
 								}else{
 								} 
 						if(isset($item["start"]["date"])) {
-								print '<li class="slideCell"><span class="left">行事名:<p>'.$item["summary"].'<p>場所:'.$item["location"].'<p>日程:<p>'.$item["start"]["date"].'</span></li>'; 
+								print '<li class="slideCell"><span class="top">行事名:</span><p><span class="name">'.$item["summary"].'</span><span class="left"><p>場所:'.$item["location"].'<p>日程:'.$item["start"]["date"].'</span></li>'; 
 								}else{
 								}
 								//if(isset($item["end"]["dateTime"])) {
