@@ -1,43 +1,44 @@
 <?php
+
 namespace MyApp;
-require_once(__DIR__ . '/../config/config.php');
 
 class Controller {
 
-		private $starttime;
-		private $endtime;
-		private $params = array();
-		private $url;
-		private $results;
-		private $json;
-		private $_values;
-		public $item;
+   private $_errors;
+   private $_values;
 
-		public function setInfo($key, $starttime){
-			$starttime = mktime(0, 0, 0, date("m"), date("d"), date("Y")-1);
-			$endtime = mktime(0, 0, 0, date('m'), date("d"), date("Y")+1);
-			$params[] = 'orderBy=startTime';
-			$params[] = 'maxResults=100';
-			$params[] = 'timeMin='.urlencode(date('c', $starttime));
-			$params[] = 'timeMax='.urlencode(date('c', $endtime));
-			$url = API_URL. '&'.implode('&', $params);
-			$results = file_get_contents($url);
-			$json = json_decode($results,true);
-			foreach($json['items'] as $item){
-					//$this->_values = $item["start"]["date"];
-					//echo $item["summary"];
-					echo $item["start"]["dateTime"];
-			}
-			$this->_values = $starttime;
-			}
+   public function __construct() {
+	  if (!isset($_SESSION['token'])){
+			  $_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(16));   
+		   }
+	  $this->_errors = new \stdClass();
+      $this->_values = new \stdClass();
+   }
 
-		
-		public function getData(){
-				return $this->_values;
-		
-		}
+   protected function setValues($key, $value){
+      $this->_values->$key = $value;
+   }
 
-		  
-		  
-}
+   public function getValues() {
+      return $this->_values;
+   }
+   protected function setErrors($key, $error) {
+     $this->_errors->$key = $error;
+   } 
 
+   public function getErrors($key){
+     return isset($this->_errors->$key) ? $this->_errors->$key : '';
+   }
+
+   protected function hasError() {  
+	  $getobject = get_object_vars($this->_errors);  
+	  return !empty($getobject);
+   }
+
+   protected function isLoggedIn() {
+      //$_SESSION['me']
+     return isset($_SESSION['me']) && !empty($_SESSION['me']);
+
+   }
+
+}    

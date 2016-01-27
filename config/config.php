@@ -2,6 +2,11 @@
 
 ini_set('display_errors', 1);
 
+//データベースの設定
+define('DSN', 'mysql:dbhost=localhost,dbname=taiikusoubu');
+define('DB_USERNAME', 'dbuser');
+define('DB_PASSWORD', '44-masaya');
+
 define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
 
 
@@ -20,7 +25,8 @@ define('API_URL', 'https://www.googleapis.com/calendar/v3/calendars/'.CALENDAR_I
 	  $url = API_URL.'&'.implode('&', $params);
 	  $results = file_get_contents($url);//データを取得
 	  $json = json_decode($results,true);//配列に格納
-	
+
+require_once(__DIR__ . '/../lib/functions.php');
 require_once(__DIR__ . '/autoload.php');
 
-//session_start();
+session_start();

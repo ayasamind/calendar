@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../config/config.php');
-$app = new MyApp\Controller;
+$app = new MyApp\Calendar;
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ $app = new MyApp\Controller;
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>calender</title>
-<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="cstyle.css" type="text/css" media="screen" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <script src="http://kaelab.ranadesign.com/blog/demo/slider/slider.js"></script>
 </head>
