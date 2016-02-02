@@ -54,7 +54,7 @@ protected function postProcess(){
 				return;
 		}
 		//redirect to login
-		header('Location:' . SITE_URL . '/hello/calendar/views/login.php');
+		header('Location:' . SITE_URL . '/login.php');
 		exit;
   }	
 }

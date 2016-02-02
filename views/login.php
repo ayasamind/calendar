@@ -30,7 +30,7 @@ $app->run();
 	</p>
   <p class="err"><?= h($app->getErrors('login')); ?></p>
   <div class="btn" onClick="document.getElementById('login').submit();">Log In</div>
-  <p class="fs12"><a href="/hello/calendar/views/signup.php">Sign Up</a></p>
+  <p class="fs12"><a href="/signup.php">Sign Up</a></p>
   <input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 </form>
 </div>

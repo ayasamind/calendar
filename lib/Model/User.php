@@ -34,7 +34,11 @@ class User extends \MyApp\Model {
 			return $user;
 		}
 
-
+		public function findAll() {
+			$stmt = $this->db->query("select * from users order by id");
+			$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+			return $stmt->fetchAll();
+		}
 
 }
 
