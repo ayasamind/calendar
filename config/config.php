@@ -3,12 +3,12 @@
 ini_set('display_errors', 1);
 
 //データベースの設定
-define('DSN', 'mysql:dbhost=localhost,dbname=taiikusoubu');
+define('DSN', 'mysql:dbhost=localhost;dbname=taiikusoubu');
 define('DB_USERNAME', 'dbuser');
 define('DB_PASSWORD', '44-masaya');
 
 define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST']);
-
+//define('SITE_URL', 'http://192.168.33.10/hello/calendar/views/signup.php');
 
 //GoogleCalendarAPIの設定
 

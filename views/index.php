@@ -1,8 +1,9 @@
 <?php
 
 require_once(__DIR__ . '/../config/config.php');
-$app = new MyApp\Calendar
-$login = new MyApp\Controllera
 
-$app->run();
+var_dump($_SESSION['me']);
+//$app = new MyApp\Calendar
+
+//$app->run();
 
