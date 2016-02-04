@@ -26,6 +26,12 @@ input[type=password]{
   font-size: 14px;
 }
 
+select{
+	padding: 5px;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
 .btn {
   width: 100px;
   padding: 7px;

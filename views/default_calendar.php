@@ -9,6 +9,7 @@
 </head>
 <body>
 <?php
+   date_default_timezone_set('Asia/Tokyo');
    //error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
    /**
 	*  * 以下の条件のカレンダー情報を取得します
@@ -29,10 +30,17 @@
      $params[] = 'maxResults=100';
      $params[] = 'timeMin='.urlencode(date('c', $t));
      $params[] = 'timeMax='.urlencode(date('c', $t2));
+    
       
       $url = API_URL.'&'.implode('&', $params);
-       
-      $results = file_get_contents($url);
+      
+      $arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+);  
+      $results = file_get_contents($url, false, stream_context_create($arrContextOptions));
         
 	    $json = json_decode($results,true);
 		

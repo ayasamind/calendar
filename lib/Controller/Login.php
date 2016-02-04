@@ -22,7 +22,7 @@ protected function postProcess() {
    $this->setErrors('login', $e->getMessage());
   }
 
-  $this->setValues('email', $_POST['email']);
+  $this->setValues('club', $_POST['club']);
 
   if ($this->hasError()) {
   	return;
@@ -30,7 +30,7 @@ protected function postProcess() {
    try {
      $userModel = new \MyApp\Model\User();
 	 $user = $userModel->login([
-			 'email' => $_POST['email'],
+			 'club' => $_POST['club'],
 			 'password' => $_POST['password']
 	 ]);
    } catch (\MyApp\Exception\UnmatchEmailOrPassword $e) {
@@ -52,12 +52,12 @@ private function _validate() {
 	exit;
  }
 
- if (!isset($_POST['email']) || !isset($_POST['password'])) {
+ if (!isset($_POST['club']) || !isset($_POST['password'])) {
     echo "Invalid Form!";
 	exit;
  }
 
- if ($_POST['email'] === '' || $_POST['password'] === '') {
+ if ($_POST['club'] === '' || $_POST['password'] === '') {
  	throw new \MyApp\Exception\EmptyPost();
  }
 }

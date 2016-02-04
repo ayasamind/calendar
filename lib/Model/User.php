@@ -5,8 +5,9 @@ namespace MyApp\Model;
 class User extends \MyApp\Model {
 		
 		public function create($values) {
-			$stmt = $this->db->prepare("insert into users (email, password, created, modified) values(:email, :password, now(), now())");
-	        $res = $stmt->execute([
+			$stmt = $this->db->prepare("insert into users (club, email, password,  created, modified) values(:club, :email, :password, now(), now())");
+			$res = $stmt->execute([
+			':club' => $values['club'],
 	 	    ':email' => $values['email'],
 		    ':password' => password_hash($values['password'], PASSWORD_DEFAULT)
 	        ]);
@@ -16,9 +17,9 @@ class User extends \MyApp\Model {
   }
   
   		public function login($values) {
-		  $stmt = $this->db->prepare("select * from users where email = :email");
+		  $stmt = $this->db->prepare("select * from users where club = :club");
 		  $stmt->execute([
-		  	':email' => $values['email']
+		  	':club' => $values['club']
 	]);
 		  $stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
 		  $user = $stmt->fetch();

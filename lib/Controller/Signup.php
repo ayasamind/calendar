@@ -46,6 +46,7 @@ protected function postProcess(){
 		try {
         $userModel = new \MyApp\Model\User();
 		$userModel->create([
+		  'club' => $_POST['club'],
 		  'email' => $_POST['email'],
 		  'password' => $_POST['password']
   ]);

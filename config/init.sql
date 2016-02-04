@@ -6,6 +6,7 @@ use taiikusoubu
 
 create table users (
   id int not null auto_increment primary key,
+  club varchar(255) unique,
   email varchar(255) unique,
   password varchar(255),
   created datetime,
